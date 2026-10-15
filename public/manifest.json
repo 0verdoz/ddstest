@@ -1,0 +1,19 @@
+{
+  "id": "/",
+  "name": "Georgia DDS Section 5 Master Quiz",
+  "short_name": "DDS Quiz",
+  "description": "Comprehensive Georgia DDS Section 5 traffic laws preparation app with 5,000+ questions, PDF OCR import, mistake vault, daily quiz, and offline mode.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
