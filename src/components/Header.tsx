@@ -27,24 +27,27 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <>
       <header className="sticky top-0 z-40 w-full border-b border-slate-200 bg-white/95 backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-8 px-4 py-3 sm:px-6">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 sm:gap-4 lg:gap-8 px-3 py-2.5 sm:px-6 sm:py-3">
           {/* Zone 1: Brand Wordmark */}
           <button
             onClick={() => onNavigate('dashboard')}
-            className="flex items-center gap-2.5 text-left text-lg font-bold tracking-tight text-slate-900 transition hover:text-blue-600 whitespace-nowrap shrink-0"
+            className="flex items-center gap-2 sm:gap-2.5 text-left font-bold tracking-tight text-slate-900 transition hover:text-blue-600 shrink-0"
           >
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-white font-black shadow-md shadow-blue-600/20">
+            <div className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-lg bg-blue-600 text-white font-black shadow-md shadow-blue-600/20 text-xs sm:text-sm shrink-0">
               5
             </div>
-            <span>Georgia DDS Section 5</span>
+            <span className="text-sm sm:text-base lg:text-lg font-extrabold whitespace-nowrap">
+              <span className="sm:hidden">GA DDS Section 5</span>
+              <span className="hidden sm:inline">Georgia DDS Section 5</span>
+            </span>
           </button>
 
           {/* Zone 2: Navigation Links (single line, crisp black font) */}
-          <nav className="hidden lg:flex items-center gap-6 text-sm font-semibold text-slate-700">
+          <nav className="hidden lg:flex items-center gap-5 xl:gap-6 text-sm font-semibold text-slate-700">
             <button
               onClick={() => onNavigate('dashboard')}
               className={`transition-colors whitespace-nowrap shrink-0 hover:text-blue-600 ${
-                activeTab === 'dashboard' ? 'text-blue-600 underline underline-offset-8 decoration-blue-600 decoration-2' : ''
+                activeTab === 'dashboard' ? 'text-blue-600 underline underline-offset-8 decoration-blue-600 decoration-2 font-bold' : ''
               }`}
             >
               Dashboard
@@ -52,7 +55,7 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               onClick={() => onNavigate('daily')}
               className={`transition-colors whitespace-nowrap shrink-0 hover:text-blue-600 ${
-                activeTab === 'daily' ? 'text-blue-600 underline underline-offset-8 decoration-blue-600 decoration-2' : ''
+                activeTab === 'daily' ? 'text-blue-600 underline underline-offset-8 decoration-blue-600 decoration-2 font-bold' : ''
               }`}
             >
               Daily Quiz
@@ -60,7 +63,7 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               onClick={() => onNavigate('mistakes')}
               className={`transition-colors whitespace-nowrap shrink-0 hover:text-blue-600 flex items-center gap-1.5 ${
-                activeTab === 'mistakes' ? 'text-blue-600 underline underline-offset-8 decoration-blue-600 decoration-2' : ''
+                activeTab === 'mistakes' ? 'text-blue-600 underline underline-offset-8 decoration-blue-600 decoration-2 font-bold' : ''
               }`}
             >
               Review Mistakes
@@ -73,7 +76,7 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               onClick={() => onNavigate('browser')}
               className={`transition-colors whitespace-nowrap shrink-0 hover:text-blue-600 ${
-                activeTab === 'browser' ? 'text-blue-600 underline underline-offset-8 decoration-blue-600 decoration-2' : ''
+                activeTab === 'browser' ? 'text-blue-600 underline underline-offset-8 decoration-blue-600 decoration-2 font-bold' : ''
               }`}
             >
               Question Bank
@@ -81,7 +84,7 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               onClick={() => onNavigate('import')}
               className={`transition-colors whitespace-nowrap shrink-0 hover:text-blue-600 ${
-                activeTab === 'import' ? 'text-blue-600 underline underline-offset-8 decoration-blue-600 decoration-2' : ''
+                activeTab === 'import' ? 'text-blue-600 underline underline-offset-8 decoration-blue-600 decoration-2 font-bold' : ''
               }`}
             >
               Import / PDF OCR
@@ -89,38 +92,38 @@ export const Header: React.FC<HeaderProps> = ({
           </nav>
 
           {/* Zone 3: Primary Action & Utilities */}
-          <div className="flex items-center gap-3 shrink-0">
+          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
             {!isOnline && (
-              <span className="hidden sm:inline-flex items-center gap-1 text-xs font-semibold text-amber-800 bg-amber-100 border border-amber-300 px-2.5 py-1 rounded-md whitespace-nowrap">
+              <span className="hidden md:inline-flex items-center gap-1 text-xs font-semibold text-amber-800 bg-amber-100 border border-amber-300 px-2.5 py-1 rounded-md whitespace-nowrap">
                 <WifiOff className="h-3.5 w-3.5 text-amber-700" />
-                Offline Mode
+                Offline
               </span>
             )}
 
             {isInstallable && (
               <button
                 onClick={install}
-                className="hidden sm:flex items-center gap-1.5 rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 transition hover:bg-slate-100 hover:text-blue-600 whitespace-nowrap shadow-sm"
+                className="hidden sm:flex items-center gap-1.5 rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-xs font-semibold text-slate-700 transition hover:bg-slate-100 hover:text-blue-600 whitespace-nowrap shadow-xs"
                 title="Install PWA application"
               >
                 <Download className="h-3.5 w-3.5 text-blue-600" />
-                Install App
+                <span className="hidden md:inline">Install App</span>
               </button>
             )}
 
             {isIOS && (
               <button
                 onClick={() => setShowIOSModal(true)}
-                className="hidden sm:flex items-center gap-1.5 rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 transition hover:bg-slate-100 hover:text-blue-600 whitespace-nowrap shadow-sm"
+                className="hidden sm:flex items-center gap-1.5 rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-xs font-semibold text-slate-700 transition hover:bg-slate-100 hover:text-blue-600 whitespace-nowrap shadow-xs"
               >
                 <Download className="h-3.5 w-3.5 text-blue-600" />
-                Add to Home
+                <span>Add to Home</span>
               </button>
             )}
 
             <button
               onClick={onOpenTotalReset}
-              className="hidden md:flex items-center gap-1.5 rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 transition hover:bg-rose-50 hover:border-rose-200 hover:text-rose-600 whitespace-nowrap shadow-xs"
+              className="hidden md:flex items-center gap-1.5 rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-xs font-semibold text-slate-700 transition hover:bg-rose-50 hover:border-rose-200 hover:text-rose-600 whitespace-nowrap shadow-xs"
               title="Total data wipe & clean start"
             >
               <RotateCcw className="h-3.5 w-3.5 text-slate-500" />
@@ -129,49 +132,78 @@ export const Header: React.FC<HeaderProps> = ({
 
             <button
               onClick={onNewQuizClick}
-              className="flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-xs font-bold text-white shadow-md shadow-blue-600/20 transition hover:bg-blue-700 active:scale-[0.98] whitespace-nowrap shrink-0"
+              className="flex items-center gap-1.5 sm:gap-2 rounded-lg bg-blue-600 px-3 py-1.5 sm:px-4 sm:py-2 text-xs font-bold text-white shadow-md shadow-blue-600/20 transition hover:bg-blue-700 active:scale-[0.98] whitespace-nowrap shrink-0"
             >
               <span>Take Quiz</span>
-              <span className="text-[10px] bg-blue-800 text-blue-100 px-1 py-0.5 rounded font-mono font-bold">20 Qs</span>
+              <span className="text-[10px] bg-blue-800 text-blue-100 px-1 py-0.5 rounded font-mono font-bold hidden xs:inline">20 Qs</span>
             </button>
           </div>
         </div>
 
         {/* Mobile secondary navigation strip */}
-        <div className="flex lg:hidden overflow-x-auto border-t border-slate-200 px-4 py-2 gap-4 text-xs font-semibold text-slate-600 no-scrollbar bg-white">
+        <div className="flex lg:hidden overflow-x-auto border-t border-slate-200 px-2.5 py-2 gap-1.5 text-xs font-semibold text-slate-600 no-scrollbar bg-slate-50/90 backdrop-blur-xs">
           <button
             onClick={() => onNavigate('dashboard')}
-            className={`whitespace-nowrap ${activeTab === 'dashboard' ? 'text-blue-600 font-bold' : ''}`}
+            className={`whitespace-nowrap px-3 py-1.5 rounded-lg transition-all shrink-0 ${
+              activeTab === 'dashboard'
+                ? 'bg-blue-600 text-white font-bold shadow-xs'
+                : 'text-slate-700 hover:bg-slate-200/60'
+            }`}
           >
             Dashboard
           </button>
           <button
             onClick={() => onNavigate('daily')}
-            className={`whitespace-nowrap ${activeTab === 'daily' ? 'text-blue-600 font-bold' : ''}`}
+            className={`whitespace-nowrap px-3 py-1.5 rounded-lg transition-all shrink-0 ${
+              activeTab === 'daily'
+                ? 'bg-blue-600 text-white font-bold shadow-xs'
+                : 'text-slate-700 hover:bg-slate-200/60'
+            }`}
           >
             Daily Quiz
           </button>
           <button
             onClick={() => onNavigate('mistakes')}
-            className={`whitespace-nowrap flex items-center gap-1 ${activeTab === 'mistakes' ? 'text-blue-600 font-bold' : ''}`}
+            className={`whitespace-nowrap px-3 py-1.5 rounded-lg transition-all shrink-0 flex items-center gap-1 ${
+              activeTab === 'mistakes'
+                ? 'bg-blue-600 text-white font-bold shadow-xs'
+                : 'text-slate-700 hover:bg-slate-200/60'
+            }`}
           >
-            Mistakes ({mistakesCount})
+            <span>Mistakes</span>
+            {mistakesCount > 0 && (
+              <span className={`text-[10px] font-mono px-1 rounded font-bold ${
+                activeTab === 'mistakes'
+                  ? 'bg-blue-800 text-white'
+                  : 'bg-rose-100 text-rose-700'
+              }`}>
+                {mistakesCount}
+              </span>
+            )}
           </button>
           <button
             onClick={() => onNavigate('browser')}
-            className={`whitespace-nowrap ${activeTab === 'browser' ? 'text-blue-600 font-bold' : ''}`}
+            className={`whitespace-nowrap px-3 py-1.5 rounded-lg transition-all shrink-0 ${
+              activeTab === 'browser'
+                ? 'bg-blue-600 text-white font-bold shadow-xs'
+                : 'text-slate-700 hover:bg-slate-200/60'
+            }`}
           >
             Question Bank
           </button>
           <button
             onClick={() => onNavigate('import')}
-            className={`whitespace-nowrap ${activeTab === 'import' ? 'text-blue-600 font-bold' : ''}`}
+            className={`whitespace-nowrap px-3 py-1.5 rounded-lg transition-all shrink-0 ${
+              activeTab === 'import'
+                ? 'bg-blue-600 text-white font-bold shadow-xs'
+                : 'text-slate-700 hover:bg-slate-200/60'
+            }`}
           >
             Import / OCR
           </button>
           <button
             onClick={onOpenTotalReset}
-            className="whitespace-nowrap text-rose-600 font-bold"
+            className="whitespace-nowrap px-3 py-1.5 rounded-lg text-rose-600 hover:bg-rose-50 font-bold shrink-0 transition-all"
           >
             Clean Start
           </button>
